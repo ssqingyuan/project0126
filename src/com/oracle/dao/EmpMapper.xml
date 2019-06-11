@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.dao.EmpDao">
+	<select id="getEmp" resultType="Emp">
+		select * from tb_emp
+		<where>
+		EmpName=#{empName} and Password=#{password}
+		</where>
+	</select>
+	
+ 	<select id="getAll" resultType="Emp">
+ 		select * from tb_emp
+ 		order by convert(EmpName using GBK)
+ 	</select>
+ 
+	<select id="getEmpById" parameterType="int" resultType="emp">
+		select empname from tb_emp
+		<where>
+			empid=#{empid};		
+		</where>	
+	</select>
+	
+</mapper>

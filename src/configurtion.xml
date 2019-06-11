@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="com/oracle/config/config.propeties">
+	</properties>
+	
+	<typeAliases >
+		<package name="com.oracle.vo"/>
+	</typeAliases>
+	
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+     	<!-- <property name="poolTimeToWait" value="30000"/>
+      	<property name="poolMaximumActiveConnections" value="2"/> -->
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/jdbc"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+      <mapper resource="com/oracle/dao/SendMessageMapper.xml"/>
+      <mapper resource="com/oracle/dao/ReceiveMessageMapper.xml"/>
+       <mapper resource="com/oracle/dao/GetMessageMapper.xml"/>
+        <mapper resource="com/oracle/dao/EmpMapper.xml"/>
+  </mappers>
+</configuration>

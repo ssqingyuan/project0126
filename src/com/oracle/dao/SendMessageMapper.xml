@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.dao.SendMessageDao">
+ 
+ 	<insert id="insert" parameterType="SendMessage" keyProperty="sendid" useGeneratedKeys="true">
+ 		insert into to_sendmessage values (null,#{empid},#{messagetitle},#{messagecontent},now(),#{priority},1)
+ 	</insert>
+ 	
+ 	<select id="getSendMessage" parameterType="int" resultType="SendMessage">
+ 		select * from to_sendmessage 
+ 			<where>
+ 				sendid=#{sendid}
+ 			</where>
+ 	</select>
+ 
+</mapper>

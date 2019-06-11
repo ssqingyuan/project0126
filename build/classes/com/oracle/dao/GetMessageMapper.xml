@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.dao.GetMessageDao">
+ 
+	<select id="getEmpIdBy" parameterType="int" resultType="receivemessage">
+		select * from to_receivemessage
+		<where>
+			empid=#{empid};		
+		</where>	
+	</select>
+	
+	<select id="getSendidBy" resultType="SendMessage" parameterType="int[]">
+		select * from to_sendmessage
+		<where>
+			sendid in
+			<foreach collection="array" item="a" open="(" close=")" separator=",">
+ 			#{a }
+ 		</foreach>
+		</where>
+	</select>
+	
+	<delete id="deletemeaasge"  parameterType="int[]">
+		delete from to_sendmessage
+		<where>sendid in
+			<foreach collection="array" item="a" open="(" close=")" separator=",">
+ 			#{a }
+ 		</foreach>
+		</where>
+	</delete>
+</mapper>
